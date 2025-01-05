@@ -1,11 +1,24 @@
 import { Module } from '@nestjs/common';
-import { ReservationsController } from './reservations.controller';
-import { ReservationsService } from './reservations.service';
+import { ReservationService } from './reservation.service';
+import { ReservationController } from './reservations.controller';
 import { DatabaseModule } from '@app/common';
+import {
+  ReservationDocument,
+  ReservationSchema,
+} from './models/reservation.schema';
+import { ReservationRepository } from './reservation.repository';
 
 @Module({
-  imports: [DatabaseModule],
-  controllers: [ReservationsController],
-  providers: [ReservationsService],
+  imports: [
+    DatabaseModule,
+    DatabaseModule.forFeature([
+      {
+        name: ReservationDocument.name,
+        schema: ReservationSchema,
+      },
+    ]),
+  ],
+  controllers: [ReservationController],
+  providers: [ReservationService, ReservationRepository],
 })
-export class ReservationsModule {}
+export class ReservationModule {}

@@ -7,7 +7,9 @@ export abstract class AbstractRepository<T extends AbstractSchema> {
 
   constructor(protected readonly model: Model<T>) {}
 
-  async create(document: Omit<T, '_id'>): Promise<T> {
+  async create(
+    document: Omit<T, '_id' | 'createdAt' | 'updatedAt'>,
+  ): Promise<T> {
     const newDocument = new this.model({
       ...document,
       _id: new Types.ObjectId(),
