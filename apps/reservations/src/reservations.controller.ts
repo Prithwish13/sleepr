@@ -16,8 +16,8 @@ export class ReservationController {
   constructor(private readonly reservationService: ReservationService) {}
 
   @Post()
-  create(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationService.create(createReservationDto);
+  async create(@Body() createReservationDto: CreateReservationDto) {
+    return await this.reservationService.create(createReservationDto);
   }
 
   @Get()

@@ -8,7 +8,7 @@ export class ReservationService {
   constructor(private readonly reservationRepository: ReservationRepository) {}
 
   async create(createReservationDto: CreateReservationDto) {
-    this.reservationRepository.create({
+    return this.reservationRepository.create({
       ...createReservationDto,
       userId: '12345',
     });

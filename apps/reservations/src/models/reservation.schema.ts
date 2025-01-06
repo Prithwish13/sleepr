@@ -14,6 +14,9 @@ export class ReservationDocument extends AbstractSchema {
 
   @Prop({ required: true })
   placeId: string;
+
+  @Prop({ required: true })
+  invoiceId: string;
 }
 
 export const ReservationSchema =
