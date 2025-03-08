@@ -21,11 +21,11 @@ WORKDIR  /usr/src/app
 
 COPY package.json ./
 COPY package-lock.json ./
-
+COPY ./apps/payments/.env ./
 RUN npm install --only=production
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD [ "node", "dist/apps/reservations/main" ]
+CMD [ "node", "dist/apps/payments/main" ]
 
 
