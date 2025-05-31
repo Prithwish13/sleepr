@@ -28,7 +28,6 @@ WORKDIR  /usr/src/app
 
 COPY package.json ./
 COPY package-lock.json ./
-COPY ./apps/auth/.env ./
 RUN npm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
