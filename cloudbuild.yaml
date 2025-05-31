@@ -1,0 +1,48 @@
+steps:
+ # Build and push the Docker image for the reservations service
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+     '-t', 
+     'asia-south1-docker.pkg.dev/sleepr-461411/reservations/production',
+     '-f',
+     'apps/reservations/Dockerfile',
+     '.'
+     ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/sleepr-461411/reservations/production']
+
+ # Build and push the Docker image for the auth service
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+     '-t', 
+     'asia-south1-docker.pkg.dev/sleepr-461411/auth/production',
+     '-f',
+     'apps/auth/Dockerfile',
+     '.'
+     ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/sleepr-461411/auth/production']
+
+ # Build and push the Docker image for the payments service
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+     '-t', 
+     'asia-south1-docker.pkg.dev/sleepr-461411/payments/production',
+     '-f',
+     'apps/payments/Dockerfile',
+     '.'
+     ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/sleepr-461411/payments/production']
+
+ # Build and push the Docker image for the notification service
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+     '-t', 
+     'asia-south1-docker.pkg.dev/sleepr-461411/notification/production',
+     '-f',
+     'apps/notification/Dockerfile',
+     '.'
+     ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/sleepr-461411/notification/production']
