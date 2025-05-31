@@ -2,8 +2,7 @@ import { Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guards';
-import { CurrentUser } from '@app/common';
-import { UserDocument } from './users/model/user.schema';
+import { CurrentUser, UserDocument } from '@app/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { JWTAuthGuard } from './guards/jwt-auth.guards';
 

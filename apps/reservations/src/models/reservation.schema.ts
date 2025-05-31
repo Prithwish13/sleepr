@@ -13,9 +13,6 @@ export class ReservationDocument extends AbstractSchema {
   userId: string;
 
   @Prop({ required: true })
-  placeId: string;
-
-  @Prop({ required: true })
   invoiceId: string;
 }
 
