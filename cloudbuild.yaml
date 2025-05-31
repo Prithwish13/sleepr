@@ -46,3 +46,7 @@ steps:
      ]
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/sleepr-461411/notification/production']
+
+# Add this options section
+options:
+  logging: CLOUD_LOGGING_ONLY
