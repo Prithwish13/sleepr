@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notification
+  name: notification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+        - image: asia-south1-docker.pkg.dev/sleepr-461411/notification/production
+          name: production
+          env:
+            - name: PORT
+              value: '3000'
+            - name: RESEND_MAIL_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: resend
+                  key: apiKey
+          ports:
+            - containerPort: 3000
