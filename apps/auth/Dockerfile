@@ -9,15 +9,15 @@ COPY nest-cli.json ./nest-cli.json
 
 
 
+RUN npm install
 
 COPY apps/auth ./apps/auth
 COPY libs libs
 
-RUN npm install -g pnpm
-RUN pnpm install
-RUN cd apps/auth && pnpm install
+RUN cd apps/auth && npm install
+RUN npm install semver --save
 
-RUN pnpm run build auth
+RUN npm run build auth
 
 FROM node:alpine As production
 
@@ -29,9 +29,7 @@ WORKDIR  /usr/src/app
 
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install -g pnpm
-
-RUN pnpm install --prod
+RUN npm install --only=production
 
 COPY --from=development /usr/src/app/dist ./dist
 
